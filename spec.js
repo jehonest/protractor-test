@@ -6,6 +6,8 @@
 - Helper function, add
 - Added the variable history
 - Assert history has the expected length using the count method
+- ElementArrayFinder has many methods: count, last, each, map, filter, reduce, ...
+	- last: get an ElementFinder that matches the last element found by the Locator
 
 */
 
@@ -30,11 +32,8 @@ describe('Protractor Demo App', function() {
     add(1, 2);
     add(3, 4);
 
-    expect(history.count()).toEqual(2);
-
-    add(5, 6);
-
-    //expect(history.count()).toEqual(0); // This is wrong!
-    expect(history.count()).toEqual(3); // This is right!
+    expect(history.last().getText()).toContain('1 + 2');
+    //expect(history.first().getText()).toContain('foo'); // This is wrong!
+    expect(history.first().getText()).toContain('3 + 4'); // This is right!
   });
 });
